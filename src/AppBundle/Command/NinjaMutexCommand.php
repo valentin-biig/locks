@@ -5,15 +5,9 @@ namespace AppBundle\Command;
 use NinjaMutex\Lock\PredisRedisLock;
 use NinjaMutex\Mutex;
 use Predis\Client;
-use RedisClient\ClientFactory;
-use RedisClient\RedisClient;
-use RedisLock\RedisLock;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Lock\Factory;
-use Symfony\Component\Lock\Store\RedisStore;
-use Symfony\Component\Lock\Store\RetryTillSaveStore;
 
 class NinjaMutexCommand extends ContainerAwareCommand
 {

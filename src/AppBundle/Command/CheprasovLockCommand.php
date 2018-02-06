@@ -3,7 +3,6 @@
 namespace AppBundle\Command;
 
 use RedisClient\ClientFactory;
-use RedisClient\RedisClient;
 use RedisLock\RedisLock;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
