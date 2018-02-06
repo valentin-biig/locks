@@ -1,6 +1,22 @@
 Php locks
 ========================
 
+## Overview
+ 
+ * Docker (nginx, php-fpm, redis)
+ * Symfony 3.4
+ * Commands to test the locks
+
+## Install
+ 
+ Create a ` .env ` file with the configuration in ` .env.dist `
+ 
+ ` docker-compose build `
+ 
+ ` docker-compose up -d `
+ 
+ ` docker-compose start `
+
 ## Container
 
 ` docker-compose exec php bash `
