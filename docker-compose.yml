@@ -1,0 +1,46 @@
+version: '2'
+
+services:
+    nginx:
+        image: nginx
+        env_file:
+              - .env
+        ports:
+              - ${NGINX_PORT}:80
+        volumes:
+            - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+            - ./web:/var/www/web
+
+    php:
+        build: docker/php-fpm
+        env_file:
+            - .env
+        volumes:
+            - .:/var/www
+            - ./docker/php-fpm/php.ini:/usr/local/etc/php/conf.d/custom.ini
+        depends_on:
+            - redis
+
+    redis:
+        image: redis
+
+    redmon:
+        image: vieux/redmon
+        entrypoint:
+            - redmon
+            - '-r'
+            - 'redis://redis:6379'
+        ports:
+            - 8090:4567
+
+    secondredis:
+        image: redis
+
+    secondredmon:
+        image: vieux/redmon
+        entrypoint:
+            - redmon
+            - '-r'
+            - 'redis://secondredis:6379'
+        ports:
+            - 8089:4567
